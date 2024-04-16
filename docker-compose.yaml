@@ -1,0 +1,26 @@
+version: '3.4'
+
+services:
+  api:
+    container_name: app
+    image: uncon/app
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8082:80
+      - 5679:5679
+    volumes:
+      - ./src/:/app/src/:ro
+      - ./logging.yaml:/app/logging.yaml:ro
+
+  sqldata:
+    container_name: sqldata
+    image: mcr.microsoft.com/mssql/server:2017-latest
+    environment:
+      - SA_PASSWORD=Pass!word
+      - ACCEPT_EULA=Y
+      - MSSQL_COLLATION=Cyrillic_General_CI_AS
+    ports:
+      - 1433:1433
+    
