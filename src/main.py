@@ -29,7 +29,7 @@ app.mount(
 def custom_swagger_ui_html():
     return get_swagger_ui_html(
         openapi_url = "/openapi.json",
-        title = "pdfwn app",
+        title = "uncon app",
         oauth2_redirect_url = "/docs/oauth2-redirect",
         swagger_js_url = "/static/swagger-ui-bundle.js",
         swagger_css_url = "/static/swagger-ui.css"
@@ -68,7 +68,6 @@ async def get_session():
             yield session
         finally:
             await session.close()
-
 
 @app.get(
     "/test"
